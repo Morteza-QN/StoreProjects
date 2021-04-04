@@ -2,6 +2,7 @@
 buildscript {
     ext.kotlin_version = "1.4.32"
     ext.koin_version = '2.2.2'
+    ext.multidex_version = "2.0.1"
     repositories {
         google()
         jcenter()
@@ -13,6 +14,9 @@ buildscript {
         classpath "org.koin:koin-gradle-plugin:$koin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+
+
     }
 }
 

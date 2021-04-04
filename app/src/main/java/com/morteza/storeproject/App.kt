@@ -1,37 +1,41 @@
 package com.morteza.storeproject
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
+import com.morteza.storeproject.data.repo.ProductRepository
+import com.morteza.storeproject.data.repo.ProductRepositoryImpl
+import com.morteza.storeproject.data.repo.source.ProductLocalDataSource
+import com.morteza.storeproject.data.repo.source.ProductRemoteDataSource
+import com.morteza.storeproject.feature.main.MainViewModel
+import com.morteza.storeproject.services.http.ApiService
+import com.morteza.storeproject.services.http.createApiServiceInstance
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
+import timber.log.Timber
 
-interface HttpClient {
-    fun sendRequest()
-}
-
-class Retrofit : HttpClient {
-    override fun sendRequest() {
-        TODO("Not yet implemented")
-    }
-}
-
-interface ImageLoadingService {
-    fun load(imageUrl: String)
-}
-
-class Picasso : ImageLoadingService {
-    override fun load(imageUrl: String) {
-        TODO("Not yet implemented")
-    }
-}
 
 class App : Application() {
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
+
     override fun onCreate() {
         super.onCreate()
-
+        Timber.plant()
         val myModules = module {
-            factory<HttpClient> { Retrofit() }
-            factory<ImageLoadingService> { Picasso() }
+            single<ApiService> { createApiServiceInstance() }
+            factory<ProductRepository> {
+                ProductRepositoryImpl(
+                    ProductRemoteDataSource(get()),
+                    ProductLocalDataSource()
+                )
+            }
+            viewModel { MainViewModel(get()) }
         }
 
         startKoin {
