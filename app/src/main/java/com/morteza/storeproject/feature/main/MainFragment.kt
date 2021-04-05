@@ -10,7 +10,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class MainFragment : NikeFragment() {
-    val mainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,8 +22,12 @@ class MainFragment : NikeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel.productLiveData.observe(this) {
+        mainViewModel.productLiveData.observe(viewLifecycleOwner) {
             Timber.i(it.toString())
+        }
+
+        mainViewModel.progressBarLiveData.observe(viewLifecycleOwner) {
+            setProgressIndicator(it)
         }
     }
 }
