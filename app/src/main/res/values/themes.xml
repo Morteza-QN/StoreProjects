@@ -16,6 +16,9 @@
         <item name="colorOnSurface">@color/black</item>
         <item name="fontFamily">@font/primary_regular</item>
         <item name="bottomNavigationStyle">@style/MyBottomNavigationView</item>
+        <item name="dividerColor">@color/gray</item>
+        <item name="android:textColorSecondary">@color/darkGray</item>
+
 
         <!--Material type attributes-->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
