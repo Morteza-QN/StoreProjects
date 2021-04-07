@@ -1,4 +1,4 @@
-package com.morteza.storeproject.data.repo.source
+package com.morteza.storeproject.data.repo.source.product
 
 import com.morteza.storeproject.data.Product
 import io.reactivex.Completable
@@ -6,8 +6,11 @@ import io.reactivex.Single
 
 interface ProductDataSource {
 
-    fun getProducts(): Single<List<Product>>
+    fun getProducts(sort: Int): Single<List<Product>>
+
     fun getFavoriteProducts(): Single<List<Product>>
+
     fun addToFavorites(): Completable
+
     fun deleteToFavorites(): Completable
 }

@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,8 +19,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_nike_logo" />
-
+                app:srcCompat="@drawable/ic_nike_logo"
+                tools:ignore="ContentDescription" />
+            <!--search-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,16 +37,81 @@
                     android:paddingEnd="16dp"
                     android:textColor="?colorOnSurface"
                     android:textColorHint="?android:textColorSecondary"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    tools:ignore="Autofill,TextFields" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
                     android:layout_marginStart="28dp"
-                    app:srcCompat="@drawable/ic_search" />
+                    app:srcCompat="@drawable/ic_search"
+                    tools:ignore="ContentDescription" />
             </FrameLayout>
+
+            <!--slider-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/bannerSliderViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
+
+                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                    android:id="@+id/slider_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="12dp"
+                    app:dotsColor="#E0CDCD"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="5dp"
+                    app:dotsSpacing="3dp"
+                    app:dotsWidthFactor="4"
+                    app:progressMode="false"
+                    app:selectedDotColor="@color/black" />
+
+            </FrameLayout>
+
+            <!--latest-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:text="@string/latest"
+                    android:textAppearance="?textAppearanceHeadline6"
+                    android:textColor="?android:textColorSecondary" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:text="@string/viewAll" />
+
+            </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/latestProductsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <!--
+
+            -->
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
