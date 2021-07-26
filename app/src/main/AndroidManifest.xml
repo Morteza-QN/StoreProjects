@@ -4,6 +4,7 @@
           package="com.morteza.storeproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -14,6 +15,7 @@
         android:theme="@style/Theme.StoreProject"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
+        <activity android:name=".feature.product.ProductDetailsActivity"></activity>
         <activity android:name=".feature.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

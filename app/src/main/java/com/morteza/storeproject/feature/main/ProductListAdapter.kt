@@ -16,12 +16,13 @@ import com.morteza.storeproject.view.NikeImageView
 class ProductListAdapter(private val imageLoadingService: ImageLoadingService) :
 	RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
+	lateinit var onProductClickListener: OnProductClickListener
+
 	var products = ArrayList<Product>()
 		set(value) {
 			field = value
 			notifyDataSetChanged()
 		}
-
 
 	inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 		private val titleTv: TextView = itemView.findViewById(R.id.productTitleTv)
@@ -37,6 +38,7 @@ class ProductListAdapter(private val imageLoadingService: ImageLoadingService) :
 			previousPriceTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 			itemView.setOnClickListener {
 				it.implementSpringAnimationTrait()
+				onProductClickListener.onProductClick(product)
 			}
 		}
 	}
@@ -47,4 +49,8 @@ class ProductListAdapter(private val imageLoadingService: ImageLoadingService) :
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bindProduct(products[position])
 
 	override fun getItemCount(): Int = products.size
+
+	interface OnProductClickListener {
+		fun onProductClick(product: Product)
+	}
 }

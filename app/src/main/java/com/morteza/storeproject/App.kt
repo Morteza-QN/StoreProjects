@@ -2,6 +2,7 @@ package com.morteza.storeproject
 
 import android.app.Application
 import android.content.Context
+import android.os.Bundle
 import androidx.multidex.MultiDex
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.morteza.storeproject.data.repo.BannerRepository
@@ -13,6 +14,7 @@ import com.morteza.storeproject.data.repo.source.product.ProductLocalDataSource
 import com.morteza.storeproject.data.repo.source.product.ProductRemoteDataSource
 import com.morteza.storeproject.feature.main.MainViewModel
 import com.morteza.storeproject.feature.main.ProductListAdapter
+import com.morteza.storeproject.feature.product.ProductDetailsViewModel
 import com.morteza.storeproject.services.http.ApiService
 import com.morteza.storeproject.services.http.createApiServiceInstance
 import com.morteza.storeproject.services.imageLoading.FrescoImageLoadingService
@@ -50,6 +52,7 @@ class App : Application() {
 			factory<BannerRepository> { BannerRepositoryImpl(BannerRemoteDataSource(get())) }
 			factory<ProductListAdapter> { ProductListAdapter(get()) }
 			viewModel { MainViewModel(get(), get()) }
+			viewModel { (bundle: Bundle) -> ProductDetailsViewModel(bundle) }
 		}
 
 		startKoin {
