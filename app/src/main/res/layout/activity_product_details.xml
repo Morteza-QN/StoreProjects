@@ -17,11 +17,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.morteza.storeproject.view.NikeImageView
-                android:id="@+id/productIv"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:viewAspectRatio="1" />
+                android:layout_height="wrap_content">
+
+                <com.morteza.storeproject.view.NikeImageView
+                    android:id="@+id/productIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:viewAspectRatio="1" />
+
+            </FrameLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -99,8 +105,10 @@
     </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/toolbarView"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:alpha="0"
         app:cardCornerRadius="0dp"
         app:cardElevation="4dp">
 
