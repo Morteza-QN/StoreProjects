@@ -7,8 +7,8 @@ import com.morteza.storeproject.common.NikeViewModel
 import com.morteza.storeproject.data.Banner
 import com.morteza.storeproject.data.Product
 import com.morteza.storeproject.data.SORT_LATEST
-import com.morteza.storeproject.data.repo.BannerRepository
-import com.morteza.storeproject.data.repo.ProductRepository
+import com.morteza.storeproject.data.repo.banner.BannerRepository
+import com.morteza.storeproject.data.repo.product.ProductRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

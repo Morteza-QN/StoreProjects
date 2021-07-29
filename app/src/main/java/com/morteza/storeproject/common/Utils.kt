@@ -5,6 +5,9 @@ import android.content.res.Resources
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.util.DisplayMetrics
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
 object MetricsUtil {
@@ -56,4 +59,10 @@ fun formatPriceToman(price: Number, unitRelativeSizeFactor: Float = 0.7f): Spann
 		SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
 	)
 	return spannableString
+}
+
+fun <T> Single<T>.asyncNetworkRequest(): Single<T> {
+	return subscribeOn(Schedulers.io())
+		.observeOn(AndroidSchedulers.mainThread())
+
 }

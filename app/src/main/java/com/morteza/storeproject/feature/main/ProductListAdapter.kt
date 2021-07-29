@@ -13,8 +13,14 @@ import com.morteza.storeproject.data.Product
 import com.morteza.storeproject.services.imageLoading.ImageLoadingService
 import com.morteza.storeproject.view.NikeImageView
 
-class ProductListAdapter(private val imageLoadingService: ImageLoadingService) :
-	RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+const val VIEW_TYPE_ROUND = 0
+const val VIEW_TYPE_SMALL = 1
+const val VIEW_TYPE_LARGE = 2
+
+class ProductListAdapter(
+	var viewType: Int = VIEW_TYPE_ROUND,
+	private val imageLoadingService: ImageLoadingService
+) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
 	lateinit var onProductClickListener: OnProductClickListener
 
@@ -43,8 +49,20 @@ class ProductListAdapter(private val imageLoadingService: ImageLoadingService) :
 		}
 	}
 
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-		ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false))
+	override fun getItemViewType(position: Int): Int {
+		return viewType
+	}
+
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+		val layoutResId = when (viewType) {
+			VIEW_TYPE_ROUND -> R.layout.item_product
+			VIEW_TYPE_SMALL -> R.layout.item_product_small
+			VIEW_TYPE_LARGE -> R.layout.item_product_large
+			else            -> throw IllegalStateException("viewType is not valid")
+
+		}
+		return ViewHolder(LayoutInflater.from(parent.context).inflate(layoutResId, parent, false))
+	}
 
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bindProduct(products[position])
 

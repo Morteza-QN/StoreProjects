@@ -1,4 +1,4 @@
-package com.morteza.storeproject.data.repo
+package com.morteza.storeproject.data.repo.banner
 
 import com.morteza.storeproject.data.Banner
 import com.morteza.storeproject.data.repo.source.banner.BannerDataSource

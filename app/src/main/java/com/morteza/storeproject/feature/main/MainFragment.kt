@@ -10,15 +10,18 @@ import com.morteza.storeproject.common.KEY_DATA
 import com.morteza.storeproject.common.NikeFragment
 import com.morteza.storeproject.common.toPx
 import com.morteza.storeproject.data.Product
+import com.morteza.storeproject.data.SORT_LATEST
+import com.morteza.storeproject.feature.list.ProductListActivity
 import com.morteza.storeproject.feature.product.ProductDetailsActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import timber.log.Timber
 
 class MainFragment : NikeFragment(), ProductListAdapter.OnProductClickListener {
 	private val mainViewModel: MainViewModel by viewModel()
-	private val productAdapter: ProductListAdapter by inject()
+	private val productAdapter: ProductListAdapter by inject { parametersOf(VIEW_TYPE_ROUND) }
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -36,6 +39,11 @@ class MainFragment : NikeFragment(), ProductListAdapter.OnProductClickListener {
 		mainViewModel.productLiveData.observe(viewLifecycleOwner) {
 			Timber.i(it.toString())
 			productAdapter.products = it as ArrayList<Product>
+		}
+		viewLatestProducts.setOnClickListener {
+			startActivity(Intent(requireContext(), ProductListActivity::class.java).apply {
+				putExtra(KEY_DATA, SORT_LATEST)
+			})
 		}
 		mainViewModel.progressBarLiveData.observe(viewLifecycleOwner) {
 			setProgressIndicator(it)

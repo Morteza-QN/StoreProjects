@@ -1,4 +1,4 @@
-package com.morteza.storeproject.data.repo
+package com.morteza.storeproject.data.repo.product
 
 import com.morteza.storeproject.data.Product
 import io.reactivex.Completable
