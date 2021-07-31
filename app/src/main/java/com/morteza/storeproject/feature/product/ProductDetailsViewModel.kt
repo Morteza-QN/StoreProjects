@@ -7,13 +7,16 @@ import com.morteza.storeproject.common.NikeSingleObserver
 import com.morteza.storeproject.common.NikeViewModel
 import com.morteza.storeproject.data.Comment
 import com.morteza.storeproject.data.Product
+import com.morteza.storeproject.data.repo.cart.CartRepository
 import com.morteza.storeproject.data.repo.comment.CommentRepository
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class ProductDetailsViewModel(
 	bundle: Bundle,
-	commentRepository: CommentRepository
+	commentRepository: CommentRepository,
+	private val cartRepository: CartRepository,
 ) : NikeViewModel() {
 
 	val productLiveData = MutableLiveData<Product>()
@@ -35,5 +38,9 @@ class ProductDetailsViewModel(
 					commentsLiveData.value = t
 				}
 			})
+	}
+
+	fun postAddToCart(): Completable {
+		return cartRepository.addToCart(productLiveData.value!!.id).ignoreElement()
 	}
 }

@@ -15,7 +15,10 @@
         android:theme="@style/Theme.StoreProject"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".feature.list.ProductListActivity"></activity>
+        <activity
+            android:name=".feature.auth.AuthActivity"
+            android:exported="true" />
+        <activity android:name=".feature.list.ProductListActivity" />
         <activity android:name=".feature.product.comment.CommentListActivity" />
         <activity android:name=".feature.product.ProductDetailsActivity" />
         <activity android:name=".feature.main.MainActivity">

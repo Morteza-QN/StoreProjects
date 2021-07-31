@@ -91,4 +91,8 @@ dependencies {
     // Java language implementation kotlin alpha
     implementation "androidx.dynamicanimation:dynamicanimation:1.0.0"
 
+    //event Bus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+
 }
