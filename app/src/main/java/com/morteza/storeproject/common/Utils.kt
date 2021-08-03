@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.util.DisplayMetrics
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -64,5 +65,9 @@ fun formatPriceToman(price: Number, unitRelativeSizeFactor: Float = 0.7f): Spann
 fun <T> Single<T>.asyncNetworkRequest(): Single<T> {
 	return subscribeOn(Schedulers.io())
 		.observeOn(AndroidSchedulers.mainThread())
+}
 
+fun Completable.asyncNetworkResponse(): Completable {
+	return subscribeOn(Schedulers.io())
+		.observeOn(AndroidSchedulers.mainThread())
 }

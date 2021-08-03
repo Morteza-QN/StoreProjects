@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_auth_et.xml" value="0.2890625" />
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_comment.xml" value="0.2890625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_et_search.xml" value="0.2890625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_auth.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_product_details.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_product_list.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/fragment_login.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/fragment_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/fragment_sign_up.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>

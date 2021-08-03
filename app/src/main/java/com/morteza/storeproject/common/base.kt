@@ -23,6 +23,8 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 abstract class NikeFragment : Fragment(), NikeView {
+
+	val compositeDisposable = CompositeDisposable()
 	override val rootView: CoordinatorLayout?
 		get() = view as CoordinatorLayout
 	override val viewContext: Context?
@@ -35,6 +37,7 @@ abstract class NikeFragment : Fragment(), NikeView {
 
 	override fun onStop() {
 		EventBus.getDefault().unregister(this)
+		compositeDisposable.clear()
 		super.onStop()
 	}
 }
