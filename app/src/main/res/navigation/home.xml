@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.morteza.storeproject.feature.main.MainFragment"
+        android:name="com.morteza.storeproject.feature.home.HomeFragment"
         android:label="MainFragment" />
 </navigation>

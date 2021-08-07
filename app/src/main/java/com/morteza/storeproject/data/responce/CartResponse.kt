@@ -12,5 +12,4 @@ data class CartResponse(
 )
 
 @Parcelize
-data class PurchaseDetail(var totalPrice: Int, var shipping_cost: Int, var payable_price: Int) :
-	Parcelable
+data class PurchaseDetail(var totalPrice: Int, var shipping_cost: Int, var payable_price: Int) : Parcelable

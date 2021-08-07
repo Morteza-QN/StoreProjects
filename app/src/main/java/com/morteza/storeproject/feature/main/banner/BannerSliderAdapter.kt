@@ -1,4 +1,4 @@
-package com.morteza.storeproject.feature.main
+package com.morteza.storeproject.feature.main.banner
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

@@ -4,15 +4,19 @@ import com.morteza.storeproject.data.TokenContainer
 import com.morteza.storeproject.data.repo.source.user.UserDataSource
 import com.morteza.storeproject.data.responce.TokenResponse
 import io.reactivex.Completable
+import timber.log.Timber
 
 class UserRepositoryImpl(
 	private val remote: UserDataSource,
 	private val local: UserDataSource
 ) : UserRepository {
+
 	override fun login(username: String, password: String): Completable {
-		return remote.login(username, password).doOnSuccess {
-			onSuccessLogin(it)
-		}.ignoreElement()
+		return remote.login(username, password)
+			.doOnSuccess {
+				Timber.i("======> ")
+				onSuccessLogin(it)
+			}.ignoreElement()
 	}
 
 	override fun signUp(username: String, password: String): Completable {
@@ -36,6 +40,7 @@ class UserRepositoryImpl(
 	}
 
 	private fun onSuccessLogin(tokenResponse: TokenResponse) {
+		Timber.i("onSuccessLogin ====> $tokenResponse")
 		TokenContainer.update(tokenResponse.access_token, tokenResponse.refresh_token)
 		local.saveToken(tokenResponse.access_token, tokenResponse.refresh_token)
 	}

@@ -55,23 +55,7 @@ interface ApiService {
 	fun refreshToken(@Body jsonObject: JsonObject): Call<TokenResponse>
 }
 
-private fun getMyOkHttpClient(): OkHttpClient.Builder {
 
-	return OkHttpClient.Builder()
-		.addInterceptor(HttpLoggingInterceptor().apply {
-			setLevel(HttpLoggingInterceptor.Level.BODY)
-		})
-		.addInterceptor {
-			val oldRequest = it.request()
-			val newRequestBuilder = oldRequest.newBuilder()
-			if (TokenContainer.token != null)
-				newRequestBuilder.addHeader("Authorization", "Bearer ${TokenContainer.token}")
-			newRequestBuilder.addHeader("Accept", "application/json")
-			newRequestBuilder.method(oldRequest.method, oldRequest.body)
-			return@addInterceptor it.proceed(newRequestBuilder.build())
-
-		}
-}
 
 fun createApiServiceInstance(): ApiService {
 	val okHttpClient = OkHttpClient.Builder()
@@ -94,6 +78,7 @@ fun createApiServiceInstance(): ApiService {
 		.baseUrl("http://expertdevelopers.ir/api/v1/")
 		.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 		.addConverterFactory(GsonConverterFactory.create())
+		.client(okHttpClient)
 		.build()
 	return retrofit.create(ApiService::class.java)
 }

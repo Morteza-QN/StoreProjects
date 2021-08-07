@@ -87,17 +87,29 @@ interface NikeView {
 		}
 	}
 
+	fun showEmptyState(layoutResId: Int): View? {
+		rootView?.let {
+			viewContext?.let { context ->
+				var emptyState = it.findViewById<View>(R.id.emptyStateRootView)
+				if (emptyState == null) {
+					emptyState = LayoutInflater.from(context).inflate(layoutResId, it, false)
+					it.addView(emptyState)
+				}
+				emptyState.visibility = View.VISIBLE
+				return emptyState
+			}
+		}
+		return null
+	}
+
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	fun showError(nikeException: NikeException) {
 		viewContext?.let {
 			when (nikeException.type) {
-
 				NikeException.Type.SIMPLE ->
 					showSnackBar(nikeException.serverMessage ?: it.getString(nikeException.userFriendlyMessage))
-
 				NikeException.Type.AUTH   -> {
 					it.startActivity(Intent(it, AuthActivity::class.java))
-					//					Toast.makeText(it, nikeException.serverMessage, Toast.LENGTH_SHORT).show()
 					showToast(nikeException.serverMessage ?: it.getString(nikeException.userFriendlyMessage))
 				}
 			}

@@ -5,6 +5,7 @@ import com.morteza.storeproject.data.TokenContainer
 import com.morteza.storeproject.data.responce.MessageResponse
 import com.morteza.storeproject.data.responce.TokenResponse
 import io.reactivex.Single
+import timber.log.Timber
 
 private const val KEY_ACCESS_TOKEN = "ACCESS_TOKEN"
 private const val KEY_REFRESH_TOKEN = "REFRESH_TOKEN"
@@ -30,6 +31,14 @@ class UserLocalDataSource(private val sharedPreferences: SharedPreferences) : Us
 			putString(KEY_ACCESS_TOKEN, token)
 			putString(KEY_REFRESH_TOKEN, refreshToken)
 		}.apply()
+		Timber.i(
+			"----------->save toke in sharedPref  ${token.substring(0, 10)}, Refresh Token-> ${
+				refreshToken.substring(
+					0,
+					10
+				)
+			}"
+		)
 	}
 
 	override fun saveUsername(username: String) {

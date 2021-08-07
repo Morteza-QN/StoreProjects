@@ -24,6 +24,8 @@ import com.morteza.storeproject.data.repo.source.user.UserRemoteDataSource
 import com.morteza.storeproject.data.repo.user.UserRepository
 import com.morteza.storeproject.data.repo.user.UserRepositoryImpl
 import com.morteza.storeproject.feature.auth.AuthViewModel
+import com.morteza.storeproject.feature.cart.CartViewModel
+import com.morteza.storeproject.feature.home.HomeViewModel
 import com.morteza.storeproject.feature.list.ProductListViewModel
 import com.morteza.storeproject.feature.main.MainViewModel
 import com.morteza.storeproject.feature.main.ProductListAdapter
@@ -72,11 +74,13 @@ class App : Application() {
 
 			single { UserLocalDataSource(get()) }
 
-			viewModel { MainViewModel(get(), get()) }
+			viewModel { HomeViewModel(get(), get()) }
 			viewModel { (bundle: Bundle) -> ProductDetailsViewModel(bundle, get(), get()) }
 			viewModel { (productId: Int) -> CommentListViewModel(productId, get()) }
 			viewModel { (sort: Int) -> ProductListViewModel(sort, get()) }
 			viewModel { AuthViewModel(get()) }
+			viewModel { CartViewModel(get()) }
+			viewModel { MainViewModel(get()) }
 		}
 
 		startKoin {

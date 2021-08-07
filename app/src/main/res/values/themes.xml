@@ -13,6 +13,7 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
 
+        <item name="windowBackgroundColorSub">#f5f5f5</item>
         <item name="colorOnSurface">@color/black</item>
         <item name="fontFamily">@font/primary_regular</item>
         <item name="bottomNavigationStyle">@style/MyBottomNavigationView</item>

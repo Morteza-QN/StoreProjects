@@ -9,6 +9,8 @@ import com.morteza.storeproject.services.http.ApiService
 import io.reactivex.Single
 
 private const val KEY_PRODUCT_ID = "product_id"
+private const val KEY_CART_ITEM_ID = "cart_item_id"
+private const val KEY_COUNT = "count"
 
 class CartRemoteDataSource(private val apiService: ApiService) : CartDataSource {
 	override fun addToCart(productId: Int): Single<AddToCartResponse> {
@@ -16,18 +18,21 @@ class CartRemoteDataSource(private val apiService: ApiService) : CartDataSource 
 	}
 
 	override fun get(): Single<CartResponse> {
-		TODO("Not yet implemented")
+		return apiService.getCart()
 	}
 
 	override fun remove(cartItemId: Int): Single<MessageResponse> {
-		TODO("Not yet implemented")
+		return apiService.removeItemFromCart(JsonObject().apply { addProperty(KEY_CART_ITEM_ID, cartItemId) })
 	}
 
 	override fun changeCount(cartItemId: Int, count: Int): Single<AddToCartResponse> {
-		TODO("Not yet implemented")
+		return apiService.changeCount(JsonObject().apply {
+			addProperty(KEY_CART_ITEM_ID, cartItemId)
+			addProperty(KEY_COUNT, count)
+		})
 	}
 
 	override fun getCartItemCount(): Single<CartItemCount> {
-		TODO("Not yet implemented")
+		return apiService.getCartItemsCount()
 	}
 }

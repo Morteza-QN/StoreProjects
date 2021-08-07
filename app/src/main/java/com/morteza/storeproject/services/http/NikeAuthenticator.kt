@@ -15,11 +15,14 @@ import org.koin.core.component.inject
 import timber.log.Timber
 
 class NikeAuthenticator : Authenticator, KoinComponent {
-	val apiService: ApiService by inject()
-	val userLocalDataSource: UserDataSource by inject()
+	private val apiService: ApiService by inject()
+	private val userLocalDataSource: UserDataSource by inject()
 	override fun authenticate(route: Route?, response: Response): Request? {
-		if (TokenContainer.token != null && TokenContainer.refreshToken != null && !response.request.url.pathSegments.last()
-				.equals("token", false)
+		Timber.i("---->> token ${TokenContainer.token != null} --tokenRef ${TokenContainer.refreshToken != null} --")
+		Timber.i("---->> lastRes ${!response.request.url.pathSegments.last().equals("token", false)} ")
+		if (TokenContainer.token != null &&
+			TokenContainer.refreshToken != null &&
+			!response.request.url.pathSegments.last().equals("token", false)
 		) {
 			try {
 				val token = refreshToken()

@@ -12,6 +12,7 @@ class NikeExceptionMapper {
 				try {
 					val errorJsonObject = JSONObject(throwable.response()?.errorBody()!!.string())
 					val errorMessage = errorJsonObject.getString("message")
+					Timber.e("mapper ====> $errorJsonObject ---- $errorMessage")
 					return NikeException(
 						if (throwable.code() == 401) NikeException.Type.AUTH else NikeException.Type.SIMPLE,
 						serverMessage = errorMessage
@@ -20,25 +21,7 @@ class NikeExceptionMapper {
 					Timber.e(exception)
 				}
 			}
-
 			return NikeException(NikeException.Type.SIMPLE, R.string.unknown_error)
 		}
 	}
-}
-
-fun map(throwable: Throwable): NikeException {
-	if (throwable is HttpException) {
-		try {
-			val errorJsonObject = JSONObject(throwable.response()?.errorBody()!!.string())
-			val errorMessage = errorJsonObject.getString("message")
-			return NikeException(
-				if (throwable.code() == 401) NikeException.Type.AUTH else NikeException.Type.SIMPLE,
-				serverMessage = errorMessage
-			)
-		} catch (exception: Exception) {
-			Timber.e(exception)
-		}
-	}
-
-	return NikeException(NikeException.Type.SIMPLE, R.string.unknown_error)
 }

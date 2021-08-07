@@ -1,4 +1,4 @@
-package com.morteza.storeproject.feature.main
+package com.morteza.storeproject.feature.main.banner
 
 import android.os.Bundle
 import android.view.LayoutInflater
