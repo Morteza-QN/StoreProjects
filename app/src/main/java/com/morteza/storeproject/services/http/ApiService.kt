@@ -2,10 +2,8 @@ package com.morteza.storeproject.services.http
 
 import com.google.gson.JsonObject
 import com.morteza.storeproject.data.*
-import com.morteza.storeproject.data.responce.AddToCartResponse
-import com.morteza.storeproject.data.responce.CartResponse
-import com.morteza.storeproject.data.responce.MessageResponse
-import com.morteza.storeproject.data.responce.TokenResponse
+import com.morteza.storeproject.data.model.*
+import com.morteza.storeproject.data.responce.*
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,8 +51,16 @@ interface ApiService {
 
 	@POST("auth/token")
 	fun refreshToken(@Body jsonObject: JsonObject): Call<TokenResponse>
-}
 
+	@POST("order/submit")
+	fun submitOrder(@Body jsonObject: JsonObject): Single<SubmitOrderResponse>
+
+	@GET("order/checkout")
+	fun checkout(@Query("order_id") orderId: Int): Single<Checkout>
+
+	@GET("order/list")
+	fun orders(): Single<List<OrderHistoryItem>>
+}
 
 
 fun createApiServiceInstance(): ApiService {

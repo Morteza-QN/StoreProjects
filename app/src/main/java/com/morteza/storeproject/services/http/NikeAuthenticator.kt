@@ -2,9 +2,9 @@ package com.morteza.storeproject.services.http
 
 import com.google.gson.JsonObject
 import com.morteza.storeproject.data.TokenContainer
-import com.morteza.storeproject.data.repo.source.user.CLIENT_ID
-import com.morteza.storeproject.data.repo.source.user.CLIENT_SECRET
-import com.morteza.storeproject.data.repo.source.user.UserDataSource
+import com.morteza.storeproject.data.repo.user.CLIENT_ID
+import com.morteza.storeproject.data.repo.user.CLIENT_SECRET
+import com.morteza.storeproject.data.repo.user.UserDataSource
 import com.morteza.storeproject.data.responce.TokenResponse
 import okhttp3.Authenticator
 import okhttp3.Request

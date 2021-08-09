@@ -15,17 +15,42 @@
         android:theme="@style/Theme.StoreProject"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity
-            android:name=".feature.auth.AuthActivity"
-            android:theme="@style/Theme.Nike.AuthTheme"
-            android:exported="true" />
+
+
+        <!--        <activity android:name=".feature.order.OrderHistoryActivity"/>-->
+        <activity android:name=".feature.favorites.FavoriteProductsActivity" />
+        <activity android:name=".feature.checkout.CheckOutActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="expertdevelopers.ir"
+                    android:pathPattern="/appCheckout"
+                    android:scheme="nike" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".feature.shipping.ShippingActivity" />
+
         <activity android:name=".feature.list.ProductListActivity" />
         <activity android:name=".feature.product.comment.CommentListActivity" />
         <activity android:name=".feature.product.ProductDetailsActivity" />
-        <activity android:name=".feature.main.MainActivity">
+
+        <!--Auth-->
+        <activity
+            android:name=".feature.auth.AuthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Nike.AuthTheme" />
+
+        <!--main-->
+        <activity
+            android:name=".feature.main.MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

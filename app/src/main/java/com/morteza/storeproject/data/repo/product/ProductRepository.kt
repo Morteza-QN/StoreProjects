@@ -1,6 +1,6 @@
 package com.morteza.storeproject.data.repo.product
 
-import com.morteza.storeproject.data.Product
+import com.morteza.storeproject.data.model.Product
 import io.reactivex.Completable
 import io.reactivex.Single
 
@@ -10,7 +10,7 @@ interface ProductRepository {
 
 	fun getFavoriteProducts(): Single<List<Product>>
 
-	fun addToFavorites(): Completable
+	fun addToFavorites(product: Product): Completable
 
-	fun deleteToFavorites(): Completable
+	fun deleteFromFavorites(product: Product): Completable
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.morteza.storeproject.R
-import com.morteza.storeproject.data.Comment
+import com.morteza.storeproject.data.model.Comment
 
 class CommentAdapter(private val isShowAll: Boolean = false) : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 

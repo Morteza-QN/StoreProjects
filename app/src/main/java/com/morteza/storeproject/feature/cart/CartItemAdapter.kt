@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.morteza.storeproject.R
 import com.morteza.storeproject.common.formatPriceToman
-import com.morteza.storeproject.data.CartItem
+import com.morteza.storeproject.data.model.CartItem
 import com.morteza.storeproject.data.responce.PurchaseDetail
 import com.morteza.storeproject.services.imageLoading.ImageLoadingService
 

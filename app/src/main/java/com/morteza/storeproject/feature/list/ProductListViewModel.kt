@@ -5,7 +5,7 @@ import com.morteza.storeproject.R
 import com.morteza.storeproject.common.NikeSingleObserver
 import com.morteza.storeproject.common.NikeViewModel
 import com.morteza.storeproject.common.asyncNetworkRequest
-import com.morteza.storeproject.data.Product
+import com.morteza.storeproject.data.model.Product
 import com.morteza.storeproject.data.repo.product.ProductRepository
 
 class ProductListViewModel(
@@ -40,10 +40,10 @@ class ProductListViewModel(
 	}
 
 	private fun getProducts() {
-		showProgressbar(true)
+		progressBarLiveData.value = true
 		productRepository.getProducts(sort)
 			.asyncNetworkRequest()
-			.doFinally { showProgressbar(false) }
+			.doFinally { progressBarLiveData.value = false }
 			.subscribe(object : NikeSingleObserver<List<Product>>(compositeDisposable) {
 				override fun onSuccess(data: List<Product>) {
 					productLiveData.value = data

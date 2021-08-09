@@ -1,14 +1,18 @@
 package com.morteza.storeproject.common
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
+import android.net.Uri
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.util.DisplayMetrics
+import androidx.browser.customtabs.CustomTabsIntent
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 
 object MetricsUtil {
@@ -70,4 +74,19 @@ fun <T> Single<T>.asyncNetworkRequest(): Single<T> {
 fun Completable.asyncNetworkResponse(): Completable {
 	return subscribeOn(Schedulers.io())
 		.observeOn(AndroidSchedulers.mainThread())
+}
+
+fun openUrlInCustomTab(context: Context, url: String) {
+	try {
+		val uri = Uri.parse(url)
+		val intentBuilder = CustomTabsIntent.Builder()
+		intentBuilder.setStartAnimations(context, android.R.anim.fade_in, android.R.anim.fade_out)
+		intentBuilder.setExitAnimations(context, android.R.anim.fade_in, android.R.anim.fade_out)
+		val customTabsIntent = intentBuilder.build()
+		customTabsIntent.intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+		customTabsIntent.launchUrl(context, uri)
+
+	} catch (e: Exception) {
+		Timber.e(e)
+	}
 }

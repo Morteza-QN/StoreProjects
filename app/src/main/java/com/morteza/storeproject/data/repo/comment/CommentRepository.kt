@@ -1,6 +1,6 @@
 package com.morteza.storeproject.data.repo.comment
 
-import com.morteza.storeproject.data.Comment
+import com.morteza.storeproject.data.model.Comment
 import io.reactivex.Single
 
 interface CommentRepository {

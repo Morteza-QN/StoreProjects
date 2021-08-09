@@ -11,7 +11,7 @@ import com.morteza.storeproject.R
 import com.morteza.storeproject.common.KEY_DATA
 import com.morteza.storeproject.common.NikeCompletableObserver
 import com.morteza.storeproject.common.NikeFragment
-import com.morteza.storeproject.data.CartItem
+import com.morteza.storeproject.data.model.CartItem
 import com.morteza.storeproject.feature.auth.AuthActivity
 import com.morteza.storeproject.feature.product.ProductDetailsActivity
 import com.morteza.storeproject.feature.shipping.ShippingActivity

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.morteza.storeproject.R
 import com.morteza.storeproject.common.KEY_DATA
-import com.morteza.storeproject.data.Banner
+import com.morteza.storeproject.data.model.Banner
 import com.morteza.storeproject.services.imageLoading.ImageLoadingService
 import com.morteza.storeproject.view.NikeImageView
 import org.koin.android.ext.android.inject

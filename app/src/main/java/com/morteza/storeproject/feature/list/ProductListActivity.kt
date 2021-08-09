@@ -7,7 +7,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morteza.storeproject.R
 import com.morteza.storeproject.common.KEY_DATA
 import com.morteza.storeproject.common.NikeActivity
-import com.morteza.storeproject.data.Product
+import com.morteza.storeproject.data.model.Product
 import com.morteza.storeproject.feature.main.ProductListAdapter
 import com.morteza.storeproject.feature.main.VIEW_TYPE_LARGE
 import com.morteza.storeproject.feature.main.VIEW_TYPE_SMALL
@@ -27,28 +27,30 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_product_list)
 
-		mInit()
-
-		productListAdapter.onProductClickListener = this
-
 		val gridLayoutManager = GridLayoutManager(this, 2)
 		productsRv.apply {
-			layoutManager = gridLayoutManager
+			layoutManager = GridLayoutManager(context, 2)
 			adapter = productListAdapter
 		}
+		mInit()
 		viewTypeChangerBtn.setOnClickListener {
+			Timber.i("gridLayoutManager.spanCount=${gridLayoutManager.spanCount}")
 			productListAdapter.apply {
 				if (viewType == VIEW_TYPE_SMALL) {
+					Timber.i("on click change btn view type has small $viewType-${gridLayoutManager.spanCount}")
 					viewTypeChangerBtn.setImageResource(R.drawable.ic_view_type_large)
 					viewType = VIEW_TYPE_LARGE
 					gridLayoutManager.spanCount = 1
+					Timber.i("on click change btn view type has large $viewType-${gridLayoutManager.spanCount}")
+					notifyDataSetChanged()
 				} else {
 					viewTypeChangerBtn.setImageResource(R.drawable.ic_grid)
 					viewType = VIEW_TYPE_SMALL
 					gridLayoutManager.spanCount = 2
+					notifyDataSetChanged()
 				}
-				notifyDataSetChanged()
 			}
+			Timber.i("gridLayoutManager.spanCount=${gridLayoutManager.spanCount}")
 		}
 		sortBtn.setOnClickListener {
 			MaterialAlertDialogBuilder(this)
@@ -63,6 +65,8 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 	}
 
 	private fun mInit() {
+		productListAdapter.onProductClickListener = this
+
 		viewModel.productLiveData.observe(this) {
 			Timber.i(it.toString())
 			productListAdapter.products = it as ArrayList<Product>
@@ -76,9 +80,11 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 	}
 
 	override fun onProductClick(product: Product) {
-		startActivity(Intent(this, ProductDetailsActivity::class.java).apply {
-			putExtra(KEY_DATA, product)
-		})
+		startActivity(Intent(this, ProductDetailsActivity::class.java).apply { putExtra(KEY_DATA, product) })
+	}
+
+	override fun onFavoriteBtnClick(product: Product) {
+
 	}
 
 

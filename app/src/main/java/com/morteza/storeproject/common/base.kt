@@ -112,6 +112,7 @@ interface NikeView {
 					it.startActivity(Intent(it, AuthActivity::class.java))
 					showToast(nikeException.serverMessage ?: it.getString(nikeException.userFriendlyMessage))
 				}
+				NikeException.Type.DIALOG -> TODO()
 			}
 		}
 	}
@@ -137,9 +138,4 @@ abstract class NikeViewModel : ViewModel() {
 		compositeDisposable.clear()
 		super.onCleared()
 	}
-
-	fun showProgressbar(isShow: Boolean) {
-		progressBarLiveData.value = isShow
-	}
-
 }

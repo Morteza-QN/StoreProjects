@@ -1,7 +1,7 @@
 package com.morteza.storeproject.data.responce
 
 import android.os.Parcelable
-import com.morteza.storeproject.data.CartItem
+import com.morteza.storeproject.data.model.CartItem
 import kotlinx.android.parcel.Parcelize
 
 data class CartResponse(

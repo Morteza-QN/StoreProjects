@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
     tools:context=".feature.list.ProductListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -13,8 +12,9 @@
         android:layout_height="wrap_content">
 
         <com.morteza.storeproject.view.NikeToolbar
+            android:id="@+id/toolbarView"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_height="56dp"
             app:toolbarTitle="@string/productList" />
 
         <View
@@ -91,9 +91,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/viewTypeChangerBtn"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productsRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="2dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:spanCount="1"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_product_large" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

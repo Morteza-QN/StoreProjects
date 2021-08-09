@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.morteza.storeproject.common.KEY_DATA
 import com.morteza.storeproject.common.NikeSingleObserver
 import com.morteza.storeproject.common.NikeViewModel
-import com.morteza.storeproject.data.Comment
-import com.morteza.storeproject.data.Product
+import com.morteza.storeproject.data.model.Comment
+import com.morteza.storeproject.data.model.Product
 import com.morteza.storeproject.data.repo.cart.CartRepository
 import com.morteza.storeproject.data.repo.comment.CommentRepository
 import io.reactivex.Completable

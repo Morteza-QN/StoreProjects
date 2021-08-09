@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="176dp"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="4dp"
-    android:layoutDirection="rtl"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
     android:paddingBottom="12dp">
-
 
     <com.morteza.storeproject.view.NikeImageView
         android:id="@+id/productIv"
@@ -17,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:roundedCornerRadius="12dp" />
+        app:roundedCornerRadius="12dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/productTitleTv"
@@ -50,10 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:text="TextView"
         android:textAppearance="?textAppearanceBody1"
         app:layout_constraintStart_toStartOf="@+id/previousPriceTv"
-        app:layout_constraintTop_toBottomOf="@+id/previousPriceTv"
-        tools:text="TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/previousPriceTv" />
 
     <ImageView
         android:id="@+id/favoriteBtn"

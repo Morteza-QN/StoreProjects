@@ -2,8 +2,8 @@ package com.morteza.storeproject.feature.main
 
 import com.morteza.storeproject.common.NikeSingleObserver
 import com.morteza.storeproject.common.NikeViewModel
-import com.morteza.storeproject.data.CartItemCount
 import com.morteza.storeproject.data.TokenContainer
+import com.morteza.storeproject.data.model.CartItemCount
 import com.morteza.storeproject.data.repo.cart.CartRepository
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus

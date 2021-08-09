@@ -1,7 +1,6 @@
 package com.morteza.storeproject.data.repo.cart
 
-import com.morteza.storeproject.data.CartItemCount
-import com.morteza.storeproject.data.repo.source.cart.CartDataSource
+import com.morteza.storeproject.data.model.CartItemCount
 import com.morteza.storeproject.data.responce.AddToCartResponse
 import com.morteza.storeproject.data.responce.CartResponse
 import com.morteza.storeproject.data.responce.MessageResponse

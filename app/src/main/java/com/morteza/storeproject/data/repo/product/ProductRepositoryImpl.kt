@@ -1,26 +1,28 @@
 package com.morteza.storeproject.data.repo.product
 
-import com.morteza.storeproject.data.Product
-import com.morteza.storeproject.data.repo.source.product.ProductDataSource
-import com.morteza.storeproject.data.repo.source.product.ProductLocalDataSource
+import com.morteza.storeproject.data.model.Product
 import io.reactivex.Completable
 import io.reactivex.Single
 
 class ProductRepositoryImpl(
-    private val remoteDataSource: ProductDataSource,
-    val localDataSource: ProductLocalDataSource
+	private val remote: ProductDataSource,
+	private val local: ProductLocalDataSource
 ) : ProductRepository {
-    override fun getProducts(sort: Int): Single<List<Product>> = remoteDataSource.getProducts(sort)
+	override fun getProducts(sort: Int): Single<List<Product>> =
+		local.getFavoriteProducts().flatMap { favoriteProducts ->
+			remote.getProducts(sort)
+				.doOnSuccess { products ->
+					val favoriteProductIds = favoriteProducts.map { it.id }
+					products.forEach { product ->
+						if (favoriteProductIds.contains(product.id))
+							product.isFavorite = true
+					}
+				}
+		}
 
-    override fun getFavoriteProducts(): Single<List<Product>> {
-        TODO("Not yet implemented")
-    }
+	override fun getFavoriteProducts(): Single<List<Product>> = local.getFavoriteProducts()
 
-    override fun addToFavorites(): Completable {
-        TODO("Not yet implemented")
-    }
+	override fun addToFavorites(product: Product): Completable = local.addToFavorites(product)
 
-    override fun deleteToFavorites(): Completable {
-        TODO("Not yet implemented")
-    }
+	override fun deleteFromFavorites(product: Product): Completable = local.deleteFromFavorites(product)
 }

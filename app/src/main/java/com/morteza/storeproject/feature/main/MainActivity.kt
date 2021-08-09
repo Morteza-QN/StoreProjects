@@ -11,7 +11,7 @@ import com.google.android.material.color.MaterialColors
 import com.morteza.storeproject.R
 import com.morteza.storeproject.common.NikeActivity
 import com.morteza.storeproject.common.toPx
-import com.morteza.storeproject.data.CartItemCount
+import com.morteza.storeproject.data.model.CartItemCount
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

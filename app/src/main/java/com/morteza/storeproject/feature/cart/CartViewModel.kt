@@ -5,10 +5,10 @@ import com.morteza.storeproject.R
 import com.morteza.storeproject.common.NikeSingleObserver
 import com.morteza.storeproject.common.NikeViewModel
 import com.morteza.storeproject.common.asyncNetworkRequest
-import com.morteza.storeproject.data.CartItem
-import com.morteza.storeproject.data.CartItemCount
-import com.morteza.storeproject.data.EmptyState
 import com.morteza.storeproject.data.TokenContainer
+import com.morteza.storeproject.data.model.CartItem
+import com.morteza.storeproject.data.model.CartItemCount
+import com.morteza.storeproject.data.model.EmptyState
 import com.morteza.storeproject.data.repo.cart.CartRepository
 import com.morteza.storeproject.data.responce.CartResponse
 import com.morteza.storeproject.data.responce.PurchaseDetail

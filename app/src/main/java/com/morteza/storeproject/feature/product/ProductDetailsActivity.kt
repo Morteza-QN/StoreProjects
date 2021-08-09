@@ -11,7 +11,7 @@ import com.morteza.storeproject.common.KEY_ID
 import com.morteza.storeproject.common.NikeActivity
 import com.morteza.storeproject.common.NikeCompletableObserver
 import com.morteza.storeproject.common.formatPriceToman
-import com.morteza.storeproject.data.Comment
+import com.morteza.storeproject.data.model.Comment
 import com.morteza.storeproject.feature.product.comment.CommentListActivity
 import com.morteza.storeproject.services.imageLoading.ImageLoadingService
 import com.morteza.storeproject.view.scroll.ObservableScrollViewCallbacks
