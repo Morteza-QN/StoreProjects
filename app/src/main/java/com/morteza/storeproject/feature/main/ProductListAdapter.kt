@@ -86,6 +86,6 @@ class ProductListAdapter(
 
 	interface OnProductClickListener {
 		fun onProductClick(product: Product)
-		fun onFavoriteBtnClick(product: Product)
+		fun onFavoriteBtnClick(product: Product) {}
 	}
 }

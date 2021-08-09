@@ -32,6 +32,7 @@ import com.morteza.storeproject.feature.home.HomeViewModel
 import com.morteza.storeproject.feature.list.ProductListViewModel
 import com.morteza.storeproject.feature.main.MainViewModel
 import com.morteza.storeproject.feature.main.ProductListAdapter
+import com.morteza.storeproject.feature.order.OrderHistoryViewModel
 import com.morteza.storeproject.feature.product.ProductDetailsViewModel
 import com.morteza.storeproject.feature.product.comment.CommentListViewModel
 import com.morteza.storeproject.feature.profile.ProfileViewModel
@@ -96,6 +97,7 @@ class App : Application() {
 			viewModel { (orderId: Int) -> CheckoutViewModel(orderId, get()) }
 			viewModel { ProfileViewModel(get()) }
 			viewModel { FavoriteProductsViewModel(get()) }
+			viewModel { OrderHistoryViewModel(get()) }
 		}
 
 		startKoin {

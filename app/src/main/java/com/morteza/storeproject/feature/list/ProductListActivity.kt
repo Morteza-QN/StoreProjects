@@ -2,6 +2,7 @@ package com.morteza.storeproject.feature.list
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morteza.storeproject.R
@@ -12,7 +13,11 @@ import com.morteza.storeproject.feature.main.ProductListAdapter
 import com.morteza.storeproject.feature.main.VIEW_TYPE_LARGE
 import com.morteza.storeproject.feature.main.VIEW_TYPE_SMALL
 import com.morteza.storeproject.feature.product.ProductDetailsActivity
-import kotlinx.android.synthetic.main.activity_comment_list.*
+import kotlinx.android.synthetic.main.activity_comment_list.productsRv
+import kotlinx.android.synthetic.main.activity_comment_list.selectedSortTitleTv
+import kotlinx.android.synthetic.main.activity_comment_list.sortBtn
+import kotlinx.android.synthetic.main.activity_comment_list.viewTypeChangerBtn
+import kotlinx.android.synthetic.main.activity_product_list.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -26,6 +31,10 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_product_list)
+
+		toolbarView.onClickBackBtnListener = View.OnClickListener {
+			finish()
+		}
 
 		val gridLayoutManager = GridLayoutManager(this, 2)
 		productsRv.apply {
@@ -82,10 +91,4 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 	override fun onProductClick(product: Product) {
 		startActivity(Intent(this, ProductDetailsActivity::class.java).apply { putExtra(KEY_DATA, product) })
 	}
-
-	override fun onFavoriteBtnClick(product: Product) {
-
-	}
-
-
 }

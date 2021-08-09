@@ -17,7 +17,7 @@
         tools:ignore="UnusedAttribute">
 
 
-        <!--        <activity android:name=".feature.order.OrderHistoryActivity"/>-->
+        <activity android:name=".feature.order.OrderHistoryActivity" />
         <activity android:name=".feature.favorites.FavoriteProductsActivity" />
         <activity android:name=".feature.checkout.CheckOutActivity">
             <intent-filter>

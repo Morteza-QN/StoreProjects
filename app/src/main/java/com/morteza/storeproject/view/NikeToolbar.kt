@@ -7,10 +7,7 @@ import android.widget.FrameLayout
 import com.morteza.storeproject.R
 import kotlinx.android.synthetic.main.view_toolbar.view.*
 
-class NikeToolbar(
-	context: Context,
-	attrs: AttributeSet?
-) : FrameLayout(context, attrs) {
+class NikeToolbar(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 	var onClickBackBtnListener: View.OnClickListener? = null
 		set(value) {
 			field = value

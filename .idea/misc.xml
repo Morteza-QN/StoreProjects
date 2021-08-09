@@ -6,6 +6,7 @@
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_auth_et.xml" value="0.2890625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_comment.xml" value="0.2890625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_et_search.xml" value="0.2890625" />
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/background_order_history_item.xml" value="0.2890625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/ic_favorite_fill.xml" value="0.2890625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/ic_favorites_20dp.xml" value="0.2015625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/drawable/ic_increase_cart_item_count.xml" value="0.2890625" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_check_out.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_comment_list.xml" value="0.1515625" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_favorite_products.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_order_history.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_product_details.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_product_list.xml" value="0.17" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/activity_shipping.xml" value="0.27291666666666664" />
@@ -29,6 +31,7 @@
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/ic_sign_in.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/item_cart.xml" value="0.33" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/item_favorite_product.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/item_order_history.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/item_product.xml" value="0.1" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/item_product_large.xml" value="0.21" />
         <entry key="..\:/Users/morte/AndroidStudioProjects/StoreProject/app/src/main/res/layout/item_product_small.xml" value="0.10677083333333333" />

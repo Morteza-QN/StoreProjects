@@ -15,7 +15,7 @@ class ProductListViewModel(
 
 	val productLiveData = MutableLiveData<List<Product>>()
 	val selectedSortTitleLiveData = MutableLiveData<Int>()
-	val sortTitles = arrayOf(
+	private val sortTitles = arrayOf(
 		R.string.sortLatest,
 		R.string.sortPopular,
 		R.string.sortPriceHighToLow,
@@ -25,7 +25,6 @@ class ProductListViewModel(
 	init {
 		updateList(sort)
 	}
-
 
 	fun updateList(sort: Int) {
 		this.sort = sort
