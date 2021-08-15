@@ -100,9 +100,5 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:padding="2dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:spanCount="1"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_product_large" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

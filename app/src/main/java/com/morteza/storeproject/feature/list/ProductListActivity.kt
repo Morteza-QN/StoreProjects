@@ -13,10 +13,7 @@ import com.morteza.storeproject.feature.main.ProductListAdapter
 import com.morteza.storeproject.feature.main.VIEW_TYPE_LARGE
 import com.morteza.storeproject.feature.main.VIEW_TYPE_SMALL
 import com.morteza.storeproject.feature.product.ProductDetailsActivity
-import kotlinx.android.synthetic.main.activity_comment_list.productsRv
-import kotlinx.android.synthetic.main.activity_comment_list.selectedSortTitleTv
-import kotlinx.android.synthetic.main.activity_comment_list.sortBtn
-import kotlinx.android.synthetic.main.activity_comment_list.viewTypeChangerBtn
+
 import kotlinx.android.synthetic.main.activity_product_list.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,34 +29,31 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_product_list)
 
-		toolbarView.onClickBackBtnListener = View.OnClickListener {
-			finish()
-		}
+		toolbarView.onClickBackBtnListener = View.OnClickListener { finish() }
 
 		val gridLayoutManager = GridLayoutManager(this, 2)
-		productsRv.apply {
-			layoutManager = GridLayoutManager(context, 2)
-			adapter = productListAdapter
-		}
-		mInit()
+		productsRv.layoutManager = gridLayoutManager
+		productsRv.adapter = productListAdapter
+		productListAdapter.onProductClickListener = this
+
+		mObserve()
 		viewTypeChangerBtn.setOnClickListener {
-			Timber.i("gridLayoutManager.spanCount=${gridLayoutManager.spanCount}")
 			productListAdapter.apply {
+				Timber.i("before changed spanCount ${gridLayoutManager.spanCount}")
 				if (viewType == VIEW_TYPE_SMALL) {
-					Timber.i("on click change btn view type has small $viewType-${gridLayoutManager.spanCount}")
 					viewTypeChangerBtn.setImageResource(R.drawable.ic_view_type_large)
 					viewType = VIEW_TYPE_LARGE
 					gridLayoutManager.spanCount = 1
-					Timber.i("on click change btn view type has large $viewType-${gridLayoutManager.spanCount}")
 					notifyDataSetChanged()
+					Timber.i("after changed spanCount large ${gridLayoutManager.spanCount}")
 				} else {
 					viewTypeChangerBtn.setImageResource(R.drawable.ic_grid)
 					viewType = VIEW_TYPE_SMALL
 					gridLayoutManager.spanCount = 2
 					notifyDataSetChanged()
+					Timber.i("after changed spanCount small ${gridLayoutManager.spanCount}")
 				}
 			}
-			Timber.i("gridLayoutManager.spanCount=${gridLayoutManager.spanCount}")
 		}
 		sortBtn.setOnClickListener {
 			MaterialAlertDialogBuilder(this)
@@ -73,9 +67,7 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 
 	}
 
-	private fun mInit() {
-		productListAdapter.onProductClickListener = this
-
+	private fun mObserve() {
 		viewModel.productLiveData.observe(this) {
 			Timber.i(it.toString())
 			productListAdapter.products = it as ArrayList<Product>
@@ -90,5 +82,9 @@ class ProductListActivity : NikeActivity(), ProductListAdapter.OnProductClickLis
 
 	override fun onProductClick(product: Product) {
 		startActivity(Intent(this, ProductDetailsActivity::class.java).apply { putExtra(KEY_DATA, product) })
+	}
+
+	override fun onFavoriteBtnClick(product: Product) {
+
 	}
 }

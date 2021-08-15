@@ -45,15 +45,16 @@ class ProductDetailsActivity : NikeActivity() {
 			val productIvHeight = productIv.height
 			val toolbar = toolbarView
 			val image = productIv
-			observableScrollView.addScrollViewCallbacks(object : ObservableScrollViewCallbacks {
-				override fun onScrollChanged(scrollY: Int, firstScroll: Boolean, dragging: Boolean) {
-					toolbar.alpha = scrollY.toFloat() / productIvHeight.toFloat()
-					image.translationY = scrollY.toFloat() / 2
-				}
+			observableScrollView.addScrollViewCallbacks(
+				object : ObservableScrollViewCallbacks {
+					override fun onScrollChanged(scrollY: Int, firstScroll: Boolean, dragging: Boolean) {
+						toolbar.alpha = scrollY.toFloat() / productIvHeight.toFloat()
+						image.translationY = scrollY.toFloat() / 2
+					}
 
-				override fun onDownMotionEvent() {}
-				override fun onUpOrCancelMotionEvent(scrollState: ScrollState?) {}
-			})
+					override fun onDownMotionEvent() {}
+					override fun onUpOrCancelMotionEvent(scrollState: ScrollState?) {}
+				})
 		}
 
 		addToCartBtn.setOnClickListener {

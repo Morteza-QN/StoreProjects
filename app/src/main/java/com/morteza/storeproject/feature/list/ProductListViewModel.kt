@@ -8,19 +8,12 @@ import com.morteza.storeproject.common.asyncNetworkRequest
 import com.morteza.storeproject.data.model.Product
 import com.morteza.storeproject.data.repo.product.ProductRepository
 
-class ProductListViewModel(
-	private var sort: Int,
-	private val productRepository: ProductRepository
-) : NikeViewModel() {
+class ProductListViewModel(private var sort: Int, private val productRepository: ProductRepository) : NikeViewModel() {
 
 	val productLiveData = MutableLiveData<List<Product>>()
 	val selectedSortTitleLiveData = MutableLiveData<Int>()
-	private val sortTitles = arrayOf(
-		R.string.sortLatest,
-		R.string.sortPopular,
-		R.string.sortPriceHighToLow,
-		R.string.sortPriceLowToHigh
-	)
+	private val sortTitles =
+		arrayOf(R.string.sortLatest, R.string.sortPopular, R.string.sortPriceHighToLow, R.string.sortPriceLowToHigh)
 
 	init {
 		updateList(sort)

@@ -13,7 +13,6 @@ import com.morteza.storeproject.common.implementSpringAnimationTrait
 import com.morteza.storeproject.data.model.Product
 import com.morteza.storeproject.services.imageLoading.ImageLoadingService
 import com.morteza.storeproject.view.NikeImageView
-import timber.log.Timber
 
 const val VIEW_TYPE_ROUND = 0
 const val VIEW_TYPE_SMALL = 1
@@ -64,12 +63,10 @@ class ProductListAdapter(
 	}
 
 	override fun getItemViewType(position: Int): Int {
-		Timber.i("view type = $viewType")
 		return viewType
 	}
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-		Timber.i("view type = $viewType")
 		val layoutResId = when (viewType) {
 			VIEW_TYPE_ROUND -> R.layout.item_product
 			VIEW_TYPE_SMALL -> R.layout.item_product_small
@@ -86,6 +83,6 @@ class ProductListAdapter(
 
 	interface OnProductClickListener {
 		fun onProductClick(product: Product)
-		fun onFavoriteBtnClick(product: Product) {}
+		fun onFavoriteBtnClick(product: Product)
 	}
 }
